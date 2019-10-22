@@ -60,17 +60,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else {
         $newMessage = new Post($title, $date, $content, $author);
-        $newMessage = (array) $newMessage;
 
-        var_dump($newMessage) ;
+        $newMessage->createPost();;
 
-        $json = json_decode(file_get_contents('data/posts.json'), true);
+        /*$json = json_decode(file_get_contents('data/posts.json'), true);
 
         array_push($json, $newMessage);
 
         $jsonData = json_encode($json, JSON_PRETTY_PRINT);
 
-        file_put_contents('data/posts.json', $jsonData);
+        file_put_contents('data/posts.json', $jsonData, FILE_APPEND);*/
 
     }
 }

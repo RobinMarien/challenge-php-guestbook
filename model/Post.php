@@ -31,4 +31,22 @@ class Post
     public function getAuthor() : string {
         return $this -> author;
     }
+
+    public function createPost()
+    {
+        $postArray = array(
+            'title' => $this->title,
+            'date' => $this->date,
+            'content' => $this->content,
+            'author' => $this->author
+        );
+        $jsonData = file_get_contents('data/posts.json');
+        $jsonArray = json_decode($jsonData, true);
+        array_push($jsonArray, $postArray);
+        $jsonData = json_encode($jsonArray, JSON_PRETTY_PRINT);
+        if (file_put_contents('data/posts.json', $jsonData)) {
+            echo 'Data successfully saved';
+        } else
+            echo "error";
+    }
 }
