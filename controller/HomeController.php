@@ -10,4 +10,5 @@ class HomeController
 
         require 'view/home.php';
     }
+
 }

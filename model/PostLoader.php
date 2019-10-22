@@ -1,6 +1,6 @@
 <?php
 
-
+declare(strict_types=1);
 class PostLoader
 {
     public function loadPosts() : array {
@@ -9,6 +9,8 @@ class PostLoader
         foreach ($json AS $postJson){
             $list[] = new Post($postJson['title'], $postJson['date'], $postJson['content'], $postJson['author']);
         }
-        return $list;
+
+        $reverseList = array_reverse($list);
+        return $reverseList;
     }
 }

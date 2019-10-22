@@ -1,14 +1,12 @@
 <?php
 
-
+declare(strict_types=1);
 class Post
 {
     private $title;
     private $date;
     private $content;
     private $author;
-
-
 
     public function __construct(string $_title, string $_date, string $_content, string $_author)
     {
