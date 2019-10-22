@@ -1,7 +1,4 @@
-<?php
-
-
-?>
+<?php ?>
 
 <!doctype html>
 <html lang="en">
@@ -13,33 +10,47 @@
     <title>Guestbook</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-<h1>My Guestbook</h1>
-<h3>Please leave a message!</h3>
+<body class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>My Guestbook</h1>
+                <h3>Please leave a message!</h3>
+            </div>
+        </div>
 
-<form method="post">
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" placeholder="Your title here!">
-    <label for="content">Content:</label>
-    <textarea id="content" name="content" placeholder="Your message here!"></textarea>
-    <label for="author">Your Name:</label>
-    <input type="text" id="author" name="author" placeholder="Your name here!">
-    <button type="submit">Post</button>
-</form>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" placeholder="Your title here!">
+                    <label for="content">Content:</label>
+                    <textarea id="content" name="content" placeholder="Your message here!"></textarea>
+                    <label for="author">Your Name:</label>
+                    <input type="text" id="author" name="author" placeholder="Your name here!">
+                    <button type="submit">Post</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <?php
+                for ($x = 0; $x <= 20; $x++) {
+                    echo "<div><h4>"
+                        . $allPosts[$x]->getTitle()
+                        . "</h4><p>"
+                        . $allPosts[$x]->getDate()
+                        . "</p><p>"
+                        . $allPosts[$x]->getContent()
+                        . "</p><p>"
+                        . $allPosts[$x]->getAuthor()
+                        . "</p></div>";
 
-
-<?php foreach($allPosts AS $post):?>
-
-    <div>
-        <h4><?php echo $post->getTitle()?></h4>
-        <p><?php echo $post->getDate()?></p>
-        <p><?php echo $post->getContent()?></p>
-        <p><?php echo $post->getAuthor()?></p>
-
+                }
+                ?>
+            </div>
+        </div>
     </div>
-
-<?php endforeach; ?>
-
 
 </body>
 </html>
